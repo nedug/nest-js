@@ -1,7 +1,8 @@
 import { Controller, Get } from "@nestjs/common";
 import { AppService } from "./app.service";
 
-// тестовый
+// для теста
+
 // Контроллеры отвечают за обработку входящих запросов и возврат ответов клиенту
 
 
