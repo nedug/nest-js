@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { UsersModule } from './users/users.module';
 
@@ -11,13 +12,18 @@ import { UsersModule } from './users/users.module';
     providers: [], // Контроллеры должны обрабатывать HTTP-запросы и делегировать Провайдерам более сложные задачи
    
     imports: [ // Импортируем другие модули (к примеру базу данных)
-        SequelizeModule.forRoot({
+
+        ConfigModule.forRoot({ // Работа с файлом .env
+           envFilePath: `.${process.env.NODE_ENV}.env`, // устанавливаем допю пакет cross-env для работы с разными файлами .env
+        }),
+
+        SequelizeModule.forRoot({ // Подключение к базе данных
             dialect: 'postgres',
-            host: 'localhost',
-            port: 5432,
-            username: 'postgres',
-            password: 'canekk7',
-            database: 'base-Ulbi',
+            host: process.env.POSTGRES_HOST,
+            port: +process.env.POSTGRES_PORT,
+            username: process.env.POSTGRES_USER,
+            password: process.env.POSTGRES_PASSWORD,
+            database: process.env.POSTGRES_DATABASE,
             models: [],
             autoLoadModels: true, // Для автоматического создания таблиц на основании моделей
           }), 
