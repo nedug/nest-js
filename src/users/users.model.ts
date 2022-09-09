@@ -1,8 +1,14 @@
 import {BelongsToMany, Column, DataType, HasMany, Model, Table} from "sequelize-typescript";
 
 
+interface UserCreationAttrs { // Опишем поля которые нужны для создания объектов Users
+    email: string
+    password: string
+}
+
+
 @Table({tableName: 'users'}) // Декторатор для того чтобы этот класс стал таблицей в базе данных с именем "users"
-export class User extends Model<User, > {
+export class User extends Model<User, UserCreationAttrs> {
     
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     // Декоратор, чтобы эти поля стали колонками в таблице. Указываем тип, уникальность, и тд.
