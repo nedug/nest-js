@@ -15,7 +15,6 @@ import {RolesModule} from "../roles/roles.module";
       SequelizeModule.forFeature([User, Role, UserRoles]), // Регистрируем созданные классы модели из users.model.ts и roles.model.ts
       RolesModule,
   ],
-
    exports: [
         UsersService,
     ]

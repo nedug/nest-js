@@ -25,4 +25,9 @@ export class UsersService {
         return users;
     }  
 
+    async getUserByEmail(email: string) {
+        const user = await this.userRepository.findOne({where: {email}, include: {all: true}})
+        return user;
+    }
+
 }
