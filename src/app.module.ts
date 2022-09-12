@@ -3,6 +3,8 @@ import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { User } from "./users/users.model";
 import { UsersModule } from './users/users.module';
+import { RolesService } from './roles/roles.service';
+import { RolesModule } from './roles/roles.module';
 
 
 // Декоратор @Module()предоставляет метаданные, которые Nest использует для организации структуры приложения.
@@ -10,7 +12,7 @@ import { UsersModule } from './users/users.module';
 @Module({
     controllers: [], // Контроллеры отвечают за обработку входящих запросов и возврат ответов клиенту
 
-    providers: [], // Контроллеры должны обрабатывать HTTP-запросы и делегировать Провайдерам более сложные задачи
+    providers: [RolesService], // Контроллеры должны обрабатывать HTTP-запросы и делегировать Провайдерам более сложные задачи
    
     imports: [ // Импортируем другие модули (к примеру базу данных)
 
@@ -29,7 +31,7 @@ import { UsersModule } from './users/users.module';
             autoLoadModels: true, // Для автоматического создания таблиц на основании моделей
           }), 
 
-          UsersModule, // Автоматически добавляетя при созднии модуля через Nest
+          UsersModule, RolesModule, // Автоматически добавляетя при созднии модуля через Nest
         ]
 })
 export class AppModule {
