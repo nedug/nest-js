@@ -1,5 +1,6 @@
 import {BelongsToMany, Column, DataType, HasMany, Model, Table} from "sequelize-typescript";
 import {ApiProperty} from "@nestjs/swagger";
+import { Role } from "../roles/roles.model";
 
 
 interface UserCreationAttrs { // Опишем поля которые нужны для создания объектов User
@@ -31,5 +32,6 @@ export class User extends Model<User, UserCreationAttrs> {
     @Column({type: DataType.STRING, allowNull: true})
     banReason: string;
 
-
+    @BelongsToMany(() => Role, () => UserRoles) // Связываем роли с пользователями
+    roles: Role[];
 }
