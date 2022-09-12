@@ -6,6 +6,7 @@ import { Role } from "./roles/roles.model";
 import { UsersModule } from './users/users.module';
 import { RolesService } from './roles/roles.service';
 import { RolesModule } from './roles/roles.module';
+import { UserRoles } from "./roles/user-roles.model";
 
 
 // Декоратор @Module()предоставляет метаданные, которые Nest использует для организации структуры приложения.
@@ -28,7 +29,7 @@ import { RolesModule } from './roles/roles.module';
             username: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DATABASE,
-            models: [User, Role], // Регистрируем созданные классы модели из users.model.ts
+            models: [User, Role, UserRoles], // Регистрируем созданные классы модели из users.model.ts
             autoLoadModels: true, // Для автоматического создания таблиц на основании моделей
           }), 
 
