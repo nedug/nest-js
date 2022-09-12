@@ -4,7 +4,6 @@ import { SequelizeModule } from "@nestjs/sequelize";
 import { User } from "./users/users.model";
 import { Role } from "./roles/roles.model";
 import { UsersModule } from './users/users.module';
-import { RolesService } from './roles/roles.service';
 import { RolesModule } from './roles/roles.module';
 import { UserRoles } from "./roles/user-roles.model";
 
@@ -14,7 +13,7 @@ import { UserRoles } from "./roles/user-roles.model";
 @Module({
     controllers: [], // Контроллеры отвечают за обработку входящих запросов и возврат ответов клиенту
 
-    providers: [RolesService], // Контроллеры должны обрабатывать HTTP-запросы и делегировать Провайдерам более сложные задачи
+    providers: [], // Контроллеры должны обрабатывать HTTP-запросы и делегировать Провайдерам более сложные задачи
    
     imports: [ // Импортируем другие модули (к примеру базу данных)
 
@@ -29,11 +28,14 @@ import { UserRoles } from "./roles/user-roles.model";
             username: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DATABASE,
-            models: [User, Role, UserRoles], // Регистрируем созданные классы модели из users.model.ts
+            models: [User, Role,
+               UserRoles
+              ], // Регистрируем созданные классы модели из users.model.ts
             autoLoadModels: true, // Для автоматического создания таблиц на основании моделей
           }), 
 
-          UsersModule, RolesModule, // Автоматически добавляетя при созднии модуля через Nest
+          UsersModule, // Автоматически добавляетя при созднии модуля через Nest
+          RolesModule, 
         ]
 })
 export class AppModule {
