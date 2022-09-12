@@ -1,7 +1,7 @@
 import {BelongsToMany, Column, DataType, HasMany, Model, Table} from "sequelize-typescript";
 
 
-interface UserCreationAttrs { // Опишем поля которые нужны для создания объектов Users
+interface UserCreationAttrs { // Опишем поля которые нужны для создания объектов User
     email: string
     password: string
 }
