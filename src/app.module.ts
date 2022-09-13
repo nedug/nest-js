@@ -10,6 +10,8 @@ import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
 import { Post } from "./posts/posts.model";
 import { FilesModule } from './files/files.module';
+import { ServeStaticModule } from "@nestjs/serve-static";
+import * as path from 'path';
 
 
 // Декоратор @Module()предоставляет метаданные, которые Nest использует для организации структуры приложения.
@@ -23,6 +25,10 @@ import { FilesModule } from './files/files.module';
 
         ConfigModule.forRoot({ // Работа с файлом .env
            envFilePath: `.${process.env.NODE_ENV}.env`, // устанавливаем доп. пакет 'cross-env' для работы с разными файлами .env
+        }),
+
+        ServeStaticModule.forRoot({
+            rootPath: path.resolve( __dirname, 'static'),
         }),
 
         SequelizeModule.forRoot({ // Подключение к базе данных
