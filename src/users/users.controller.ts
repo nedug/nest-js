@@ -3,6 +3,7 @@ import {UsersService} from "./users.service";
 import {CreateUserDto} from "./dto/create-user.dto";
 import {ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
 import {User} from "./users.model";
+import { RolesGuard } from 'src/auth/roles.guard';
 
 
 @ApiTags('Пользователи')  // Для Swagger
