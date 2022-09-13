@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { RolesModule } from './roles/roles.module';
 import { UserRoles } from "./roles/user-roles.model";
 import { AuthModule } from './auth/auth.module';
+import { PostsModule } from './posts/posts.module';
 
 
 // Декоратор @Module()предоставляет метаданные, которые Nest использует для организации структуры приложения.
@@ -36,7 +37,7 @@ import { AuthModule } from './auth/auth.module';
           }), 
 
           UsersModule, // Автоматически добавляетя при созднии модуля через Nest
-          RolesModule, AuthModule, 
+          RolesModule, AuthModule, PostsModule, 
         ]
 })
 export class AppModule {
