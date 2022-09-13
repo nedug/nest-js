@@ -23,9 +23,9 @@ import * as path from 'path';
    
     imports: [ // Импортируем другие модули (к примеру базу данных)
 
-        ConfigModule.forRoot({ // Работа с файлом .env
-           envFilePath: `.${process.env.NODE_ENV}.env`, // устанавливаем доп. пакет 'cross-env' для работы с разными файлами .env
-        }),
+        // ConfigModule.forRoot({ // Работа с файлом .env
+        //    envFilePath: `.${process.env.NODE_ENV}.env`, // устанавливаем доп. пакет 'cross-env' для работы с разными файлами .env
+        // }),
 
         ServeStaticModule.forRoot({
             rootPath: path.resolve( __dirname, 'static'),
