@@ -2,6 +2,7 @@ import {BelongsToMany, Column, DataType, HasMany, Model, Table} from "sequelize-
 import {ApiProperty} from "@nestjs/swagger";
 import { Role } from "../roles/roles.model";
 import { UserRoles } from "src/roles/user-roles.model";
+import { Post } from "src/posts/posts.model";
 
 
 interface UserCreationAttrs { // Опишем поля которые нужны для создания объектов User
@@ -35,4 +36,7 @@ export class User extends Model<User, UserCreationAttrs> {
 
     @BelongsToMany(() => Role, () => UserRoles) // Связываем роли с пользователями
     roles: Role[];
+
+    @HasMany(() => Post)
+    posts: Post[];
 }
