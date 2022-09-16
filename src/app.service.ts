@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 
 
 // для теста
@@ -8,8 +8,7 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class AppService {
-    
     getUsers() {
-        return [{id: 1, name: 'Sasha'}]
+        return [{ id: 1, name: 'Sasha' }];
     }
 }
