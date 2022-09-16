@@ -1,5 +1,5 @@
-import { Controller, Get } from "@nestjs/common";
-import { AppService } from "./app.service";
+import { Controller, Get } from '@nestjs/common';
+import { AppService } from './app.service';
 
 // для теста
 
@@ -9,10 +9,11 @@ import { AppService } from "./app.service";
 @Controller('/api') // Указываем адрес запроса (можно тут не указывать)
 export class AppController {
 
-    constructor(private appService: AppService) {} // Испрользуем наш провайдер
-    
+    constructor(private appService: AppService) {
+    } // Испрользуем наш провайдер
+
     @Get('/users') // Указываем Декоратор метода HTTP
     getUsers() {
-        return this.appService.getUsers()
+        return this.appService.getUsers();
     }
 }
