@@ -5,7 +5,6 @@ import { ValidationPipe } from './pipe/validation.pipe';
 
 
 async function start() {
-
     const PORT = process.env.PORT || 5001;
 
     // Создаем приложение c нужным модулем
@@ -27,6 +26,5 @@ async function start() {
     // Запускаем сервер
     await app.listen(PORT, () => console.log(`Server started on port = ${PORT}`));
 }
-
 
 start();
