@@ -1,16 +1,16 @@
-import { Module } from "@nestjs/common";
-import { ConfigModule } from "@nestjs/config";
-import { SequelizeModule } from "@nestjs/sequelize";
-import { User } from "./users/users.model";
-import { Role } from "./roles/roles.model";
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { User } from './users/users.model';
+import { Role } from './roles/roles.model';
 import { UsersModule } from './users/users.module';
 import { RolesModule } from './roles/roles.module';
-import { UserRoles } from "./roles/user-roles.model";
+import { UserRoles } from './roles/user-roles.model';
 import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
-import { Post } from "./posts/posts.model";
+import { Post } from './posts/posts.model';
 import { FilesModule } from './files/files.module';
-import { ServeStaticModule } from "@nestjs/serve-static";
+import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
 
 
@@ -20,16 +20,16 @@ import * as path from 'path';
     controllers: [], // Контроллеры отвечают за обработку входящих запросов и возврат ответов клиенту
 
     providers: [], // Контроллеры должны обрабатывать HTTP-запросы и делегировать Провайдерам более сложные задачи
-   
+
     imports: [ // Импортируем другие модули (к примеру базу данных)
 
         ConfigModule.forRoot({ // Работа с файлом .env
-        //    envFilePath: `.${process.env.NODE_ENV}.env`, // устанавливаем доп. пакет 'cross-env' для работы с разными файлами .env
-           envFilePath: `.env`,
+            //    envFilePath: `.${process.env.NODE_ENV}.env`, // устанавливаем доп. пакет 'cross-env' для работы с разными файлами .env
+            envFilePath: `.env`,
         }),
 
         ServeStaticModule.forRoot({
-            rootPath: path.resolve( __dirname, 'static'),
+            rootPath: path.resolve(__dirname, 'static'),
         }),
 
         SequelizeModule.forRoot({ // Подключение к базе данных
@@ -41,11 +41,11 @@ import * as path from 'path';
             database: process.env.POSTGRES_DATABASE,
             models: [User, Role, UserRoles, Post], // Регистрируем созданные классы модели из users.model.ts
             autoLoadModels: true, // Для автоматического создания таблиц на основании моделей
-          }), 
+        }),
 
-          UsersModule, // Автоматически добавляетя при созднии модуля через Nest
-          RolesModule, AuthModule, PostsModule, FilesModule, 
-        ]
+        UsersModule, // Автоматически добавляетя при созднии модуля через Nest
+        RolesModule, AuthModule, PostsModule, FilesModule,
+    ],
 })
 export class AppModule {
 
