@@ -2,8 +2,6 @@
 
 ***
 
-
-
 * User registration on PostgreSQL
 * User Login + JWT Token
 * Find all users
