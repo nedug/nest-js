@@ -27,5 +27,3 @@ Technologies and libraries in development:
 
 
 
-
-
